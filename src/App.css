@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.list-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.list-item .item{
+  flex: 0 0 calc(33.33% - 50px);
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 10px;
+}
+
+.list-item .item:nth-child(odd) {
+  background: #ccc;
+}
