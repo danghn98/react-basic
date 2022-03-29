@@ -1,92 +1,79 @@
-import Item from './item';
-import data from './data';
+// import { useEffect } from 'react';
+import { NavLink, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
-
-// const data = [
-// 	{
-// 		"albumId": 1,
-// 		"id": 21,
-// 		"title": "ad et natus qui",
-// 		"url": "https://via.placeholder.com/600/5e12c6",
-// 		"thumbnailUrl": "https://via.placeholder.com/150/5e12c6"
-// 	},
-// 	{
-// 		"albumId": 1,
-// 		"id": 22,
-// 		"title": "et ea illo et sit voluptas animi blanditiis porro",
-// 		"url": "https://via.placeholder.com/600/45601a",
-// 		"thumbnailUrl": "https://via.placeholder.com/150/45601a"
-// 	},
-// 	{
-// 		"albumId": 1,
-// 		"id": 23,
-// 		"title": "harum velit vero totam",
-// 		"url": "https://via.placeholder.com/600/e924e6",
-// 		"thumbnailUrl": "https://via.placeholder.com/150/e924e6"
-// 	},
-// 	{
-// 		"albumId": 1,
-// 		"id": 24,
-// 		"title": "beatae officiis ut aut",
-// 		"url": "https://via.placeholder.com/600/8f209a",
-// 		"thumbnailUrl": "https://via.placeholder.com/150/8f209a"
-// 	},
-// 	{
-// 		"albumId": 1,
-// 		"id": 25,
-// 		"title": "facere non quis fuga fugit vitae",
-// 		"url": "https://via.placeholder.com/600/5e3a73",
-// 		"thumbnailUrl": "https://via.placeholder.com/150/5e3a73"
-// 	},
-// 	{
-// 		"albumId": 1,
-// 		"id": 26,
-// 		"title": "asperiores nobis voluptate qui",
-// 		"url": "https://via.placeholder.com/600/474645",
-// 		"thumbnailUrl": "https://via.placeholder.com/150/474645"
-// 	},
-// 	{
-// 		"albumId": 1,
-// 		"id": 27,
-// 		"title": "sit asperiores est quos quis nisi veniam error",
-// 		"url": "https://via.placeholder.com/600/c984bf",
-// 		"thumbnailUrl": "https://via.placeholder.com/150/c984bf"
-// 	},
-// 	{
-// 		"albumId": 1,
-// 		"id": 28,
-// 		"title": "non neque eligendi molestiae repudiandae illum voluptatem qui aut",
-// 		"url": "https://via.placeholder.com/600/392537",
-// 		"thumbnailUrl": "https://via.placeholder.com/150/392537"
-// 	},
-// 	{
-// 		"albumId": 1,
-// 		"id": 29,
-// 		"title": "aut ipsam quos ab placeat omnis",
-// 		"url": "https://via.placeholder.com/600/602b9e",
-// 		"thumbnailUrl": "https://via.placeholder.com/150/602b9e"
-// 	},
-// 	{
-// 		"albumId": 1,
-// 		"id": 30,
-// 		"title": "odio enim voluptatem quidem aut nihil illum",
-// 		"url": "https://via.placeholder.com/600/372c93",
-// 		"thumbnailUrl": "https://via.placeholder.com/150/372c93"
-// 	}
-// ];
-
-const date = new Date().toString();
+import BaiTap1 from './components/BaiTap1';
+import ColorBox from './components/ColorBox';
+import Counnter from './components/Counter';
+import NotFound from './components/NotFound';
+import AlbumFeature from './features/Album';
+import DataList from './features/DataList';
+import TodoFeature from './features/Todo';
+// import productApi from './api/productApi';
+import BaiTap2 from './components/BaiTap2';
 
 function App() {
-	return (
-		<div className="contaner">
-			<div className="list-item">
-				{data.map((item, index) => (
-					<Item key={index} title={item.title} img={item.thumbnailUrl} date={date} />
-				))}
-			</div>
-		</div>
-	);
+    // useEffect(() => {
+    //     const fetchProducts = async () => {
+    //         const params = {
+    //             _limit: 10,
+    //         };
+    //         const productList = await productApi.getAll(params);
+    //         console.log(productList);
+    //     };
+
+    //     fetchProducts();
+    // }, []);
+
+    return (
+        <div className='contaner'>
+            Header
+            {/* <TodoFeature/>
+			<AlbumFeature/>
+			<ColorBox/>
+			<Counnter/> */}
+            {/* <p><Link to="/todos">Todos</Link></p>
+			<p><Link to="/albums">Albums</Link></p> */}
+            <p>
+                <NavLink to='/data-list'>Data List</NavLink>
+            </p>
+            <p>
+                <NavLink to='/todos' activeClassName='active-menu'>
+                    Todos
+                </NavLink>
+            </p>
+            <p>
+                <NavLink to='/albums'>Albums</NavLink>
+            </p>
+            <p>
+                <NavLink to='/colorbox'>Color Box</NavLink>
+            </p>
+            <p>
+                <NavLink to='/counter'>Counter</NavLink>
+            </p>
+            <p>
+                <NavLink to='/bai-tap-1'>Bai tap 1</NavLink>
+            </p>
+            <p>
+                <NavLink to='/bai-tap-2'>Bai tap 2 Calendar</NavLink>
+            </p>
+            <Switch>
+                <Redirect from='/home' to='/' />
+                <Redirect from='/post-list/:postId' to='/post/:postId' />
+                <Route path='/data-list' component={DataList} exact />
+                {/* <Route path="/" component={TodoFeature} exact />  */}
+                <Route path='/todos' component={TodoFeature} />
+                <Route path='/albums' component={AlbumFeature} />
+                <Route path='/colorbox' component={ColorBox} />
+                <Route path='/counter' component={Counnter} />
+
+                <Route path='/bai-tap-1' component={BaiTap1} />
+                <Route path='/bai-tap-2' component={BaiTap2} />
+
+                <Route component={NotFound} />
+            </Switch>
+            Footer
+        </div>
+    );
 }
 
 export default App;

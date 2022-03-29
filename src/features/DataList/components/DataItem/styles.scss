@@ -1,0 +1,17 @@
+.list-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  
+  .list-item .item{
+    border: 1px solid #ccc;
+    text-align: center;
+    max-width: calc(33% - 30px);
+    padding: 10px;
+  }
+  
+  .list-item .item:nth-child(odd) {
+    background: #ccc;
+  }

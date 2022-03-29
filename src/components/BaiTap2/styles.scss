@@ -1,0 +1,61 @@
+.calendar {
+    max-width: 702px;
+    margin: auto;
+
+    h2 {
+        text-align: center;
+    }
+
+    &-{
+        &container {
+            border: 1px solid #000;          
+        }
+
+        &header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+
+            button {
+                cursor: pointer;
+                height: 40px;
+            }
+
+            .data-date {
+                text-align: center;
+            }
+        }   
+
+        &days {
+            background-color: #ccc;
+            padding: 10px 0;
+
+            &-item {
+                width: calc(700px / 7);
+                display: inline-block;
+                text-align: center;
+            }
+        }
+
+        &day-of-month {
+            padding: 0;
+
+            .date {
+                width: calc(700px / 7);
+                display: inline-block;
+                text-align: center;
+                margin-bottom: 20px;
+                font-weight: bold;
+
+                &.out-of-month {
+                    opacity: .4;
+                }
+
+                &.end-week {
+                    color: red;
+                }
+            }
+        }
+    }
+}
